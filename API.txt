@@ -1,0 +1,64 @@
+#############################################################
+# Title: Python Config Class Documenation                   #
+# Description: Documentation for the config Module          #
+#              python class                                 #
+# Version:                                                  #
+#   * Document Version 1.0 03/31/2016 RC                    #
+#                                                           #
+# Author: Richard Cintorino (c) Richard Cintorino 2016      #
+#############################################################
+
+pyConfig Class
+
+    Usage: 
+
+    from Config import pyConfig
+    self.Config = pyConfig(self, "/path/to/config.file", True)
+    
+    self.Config.Get("key") #trys to pull value for "key" in config file
+    
+    self.Config.GetAll("Serial","Serial_") #Get all key's (and their value pairs) that
+        contain "Serial", and remove "Serial_" from the key name if present.
+        ex: (key value pair is "Serial_PortBaud=9600") function returns ("PortBaud=9600")
+    
+    self.Config.Set("key","value",Autowrite=True) #Sets the Value in setting "key" to "value",
+        and if "Autowrite=True" will automatically write the settings to a file
+
+    self.Config.Del("key","value",Autowrite=True) #deletes the key "key" from the confg settings,
+        and if "Autowrite=True" will automatically write the settings to it's configuration file
+
+    __init__ Variables:
+        ConfigFile:
+            Path to the configuration file to load
+        Debug (True | False):
+            True: Display all debug information to stdout
+            False: Display only critical Log based errors to stdout
+            
+    Get Variables: Gets a variable from the configuration
+        sKey:
+            string of key name to retrieve value for in config
+    
+    GetAll Variables: Gets a variable from the configuration
+        sKey:
+            string of key name to retrieve value for in config
+        sRemove:
+            string to remove from key of settings
+    
+    Set Variables: Sets a variable in the configuration
+        sKey:
+            string of key name to retrieve value for in config
+        sValue:
+            string of value to update key with
+        Autowrite (Default True):
+            True: Automatically write configuration changes to file *NOTE: This will save any
+                changes made to the config in memory to file.
+            False: Only update configuration in memory
+
+    Del Variables: Deletes a variable from the configuration
+        sKey:
+            string of key name to delete from config
+        Autowrite (Default True):
+            True: Automatically write configuration changes to file *NOTE: This will save any
+                changes made to the config in memory to file.
+            False: Only update configuration in memory
+            
