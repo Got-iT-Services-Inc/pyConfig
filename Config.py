@@ -21,15 +21,14 @@ from Debug import pyDebugger
 
 class pyConfig:
 
-    __cfgFileName = "/opt/avi/config.ini"
-    
     def __init__(self, ConfigFile, bDebug = True):
-        self.__cfgFileName = ConfigFile
+        self.cfgFileName = ConfigFile
+        
         self.Debugger = pyDebugger(self,bDebug,False)
         
         try:
-            self.Debugger.Log("Opening Configuration File '" + self.__cfgFileName + "'...",endd='')
-            with open (self.__cfgFileName) as cfgFile:
+            self.Debugger.Log("Opening Configuration File '" + self.cfgFileName + "'...",endd='')
+            with open (self.cfgFileName) as cfgFile:
                 self.Debugger.Log("...Success!",PrintName=False)
                 self.__Config = cfgFile.read().split("\n")
 
